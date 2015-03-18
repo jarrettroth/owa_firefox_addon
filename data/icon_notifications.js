@@ -151,7 +151,7 @@ function getCountBasedOffSpans(spanContainer){
 }
 
 function getCountFromHTML(container){
-    return parseInt(container.innerHTML.match(/\d/gi).join(""), 10);
+    return (container.innerHTML.indexOf("Unread") > 0) ? parseInt(container.innerHTML.match(/\d/gi).join(""), 10) : 0;
 }
 
 function getFolders (){
