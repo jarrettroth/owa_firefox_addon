@@ -151,7 +151,7 @@ function getCountBasedOffSpans(spanContainer){
 }
 
 function getCountFromHTML(container){
-    return parseInt(container.innerHTML.match(/\d/gi).join(""), 10);
+    return (container.innerHTML.indexOf("Unread") > 0) ? parseInt(container.innerHTML.match(/\d/gi).join(""), 10) : 0;
 }
 
 function getFolders (){
@@ -159,7 +159,9 @@ function getFolders (){
 }
 
 function getItemsWithActiveCount(folder){
-    return folder.querySelectorAll("[id*='.ucount']");
+	var name = folder.querySelectorAll("[id*='.subfolders']");
+	var inbox = name[0].firstChild;
+    return inbox.querySelectorAll("[id*='.ucount']");
 }
 
 function getContainersBySpanId(){
